@@ -30,11 +30,11 @@ function AppContent() {
   return (
       <section className="App">
           {showAlert && (
-              <div className="alert-container">
-                  <div className="alert alert-success" role="alert">
+              <section className="alert-container">
+                  <section className="alert alert-success" role="alert">
                       회원가입을 축하합니다!
-                  </div>
-              </div>
+                  </section>
+              </section>
           )}
           <Routes>
               <Route path="/" element={<Login />} />
