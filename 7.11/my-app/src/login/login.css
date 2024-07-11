@@ -1,0 +1,50 @@
+.user {
+    width: 30%;
+    margin: 50px auto;
+    background-color: white;
+    padding: 40px; 
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+.userForm .inputGroup {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.userForm .inputGroup input{
+    margin-top: 10px;
+    padding: 14px 16px;
+    border: 1px solid #dddfe2;;
+    vertical-align: middle;
+    border-radius: 10px;
+}
+
+.inputGroup .btn.btn-primary.btn-lg {
+    margin-top: 10px;
+}
+
+.user h3 {
+    text-align: center;
+    font-weight: bold;
+    color: darkcyan;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.divider {
+    height: 1px;
+    background-color: #ccc;
+    margin: 20px 0;
+}
+
+.signup {
+    display: flex;
+    justify-content: center; /* 가운데 정렬 */
+}
+
+.signup .btn.btn-success.btn-lg{
+    background-color: #42b72a;
+    border: none;
+}
