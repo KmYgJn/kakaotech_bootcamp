@@ -1,26 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Home from './home/Home'
+import Signup from './signup/Signup';
+import Login from './login/Login';
+import React, {useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <AppContent />
+    </Router>
   );
+}
+
+const AppContent: React.FC = () => {
+  const [showAlert, setShowAlert] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+      const params = new URLSearchParams(location.search);
+      if (params.get('signupSuccess')) {
+          setShowAlert(true);
+          setTimeout(() => {
+              setShowAlert(false);
+          }, 1000); // 1초 후에 알림창 사라짐
+      }
+  }, [location]);
+
+
+  return (
+    <section className="App">
+          {showAlert && (
+              <section className="alert-container">
+                  <section className="alert alert-success" role="alert">
+                      회원가입을 축하합니다!
+                  </section>
+              </section>
+          )}
+        <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/home" element={<Home />} />
+        </Routes>
+    </section>
+);
 }
 
 export default App;
