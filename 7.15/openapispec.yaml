@@ -1,0 +1,50 @@
+openapi: 3.0.0
+info:
+  title: teddy OpenAPI
+  description: teddy in API docs
+  version: 1.0.0
+  contact:
+    email: qazyj@naver.com
+    name: teddy
+paths:
+  /test/{test_id}:
+    get:
+      description: Use this APi to fetch details of a test
+      parameters:
+        - name: test_id
+          required: true
+          in: path
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: 200 response
+          content:
+            application/json:
+              schema: 
+                $ref: "#/components/schemas/test"
+  /test:
+    post:
+      description: Use this API to create test
+      requestBody:
+        description: Structure of a test
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/test"
+          
+      responses:
+        "200":
+          description: test created successfully
+        
+
+components:
+  schemas:
+    test:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
