@@ -4,9 +4,9 @@ import {Link} from "react-router-dom";
 
 const Login = () => {
     return (
-        <section className="addUser">
+        <section className="user">
             <h3>로그인</h3>
-            <form className="addUserForm">
+            <form className="userForm">
                 <section className="inputGroup">
                     <input
                     type="email"
