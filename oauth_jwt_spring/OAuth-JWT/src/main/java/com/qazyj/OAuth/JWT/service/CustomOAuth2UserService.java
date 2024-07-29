@@ -1,7 +1,9 @@
 package com.qazyj.OAuth.JWT.service;
 
+import com.qazyj.OAuth.JWT.dto.CustomOAuth2User;
 import com.qazyj.OAuth.JWT.dto.KakaoResponse;
 import com.qazyj.OAuth.JWT.dto.OAuth2Response;
+import com.qazyj.OAuth.JWT.dto.UserDTO;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
@@ -32,7 +34,13 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
             return null;
         }
 
-        //추후 작성
-        return null;
+        String username = oAuth2Response.getProvider()+" " + oAuth2Response.getProviderId();
+
+        UserDTO userDTO = new UserDTO();
+        userDTO.setUsername(username);
+        userDTO.setName(oAuth2Response.getName());
+        userDTO.setRole("ROLE_USER");
+
+        return new CustomOAuth2User(userDTO);
     }
 }
